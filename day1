@@ -1,3 +1,4 @@
+#######################operating system basics ##########################
 
 range-isms, are called out periodically in lessons to remind you of their presence. You must ignore or avoid interacting with these items.
 interacting with them may cause the range to fail and require a redeployment. Some of these range-isms include:
@@ -348,8 +349,386 @@ Profiles key:
 Profiles key contains a list of Globally Unique Identifier (GUID) values, which are present throughout the Windows OS. Windows uses GUIDs to refer to unique objects within the system, 
 though GUIDs are not guaranteed to be unique across systems. In this case, each GUID represents a different network profile that this machine has been connected to. 
 
+-------------------Linux Configuration Files------------------------
+
+Unix-like systems are stored as files. These files are known as configuration files, and are used similarly to the Windows registry in order to control how
+a system or application functions. Configuration files are commonly located within the system’s /etc directory 
+
+/etc/hosts file is used by the machine to shortcut the process of translating domain names into IP addresses, which is normally done via a separate network
+request. If a domain name and IP address pair is included in the /etc/hosts file, the system can perform the translation itself without performing this 
+additional network request.
+
+commands used in VM: 
+cat /etc/hostname
+cat /etc/hosts
+cat /var/log/journal/45627726134a433098b9c96c49beda8c/user-1003.journal
+journalctl --user
 
 --------------------------OS Fundamentals | Conclusion-------------------------
+
+
+
+
+---------------------Forensic Principals-------------------------------
+forensics involves the investigation of evidence sources left behind at the scene of a crime, in order to piece together additional information about that crime.
+
+crime occurs in relation to a computer system, it requires special investigative techniques that fall under the umbrella of digital forensics. True digital forensics 
+is more frequently found in law enforcement or federal investigations, which ultimately strive to identify, arrest, and prosecute the perpetrator(s) of a crime. 
+
+
+Stages of Digital Forensics:
+- Identification of evidence sources
+- Preservation of evidence sources
+- Acquisition of data from evidence sources
+- Analysis and interpretation of the acquired data
+- Presentation of the analysis results
+
+------------------------chain of custody------------------------
+procedures are collectively known as chain of custody and are crucial in order to prove that evidence being presented in court has not been altered
+or tampered with in any way. Failure to follow chain of custody could entirely invalidate the results of an investigation and subsequent trial, 
+and may lead to the unsuccessful prosecution of an otherwise guilty offender.
+
+
+----------------------File Forensics--------------------------
+Much of digital forensics activity is concerned with recovering evidence stored in files within a computer system. In some cases, files are freely 
+available on the filesystem, and an investigator simply needs to locate them and identify whether their contents are relevant to the investigation.
+In other cases, investigators must attempt to reconstruct deleted files. In both of these cases, investigators may further need to prove that a 
+file is relevant to the investigation
+
+
+
+----------------------File Carving--------------------------
+
+File carving is the process of reconstructing files by scanning the raw bytes of a disk, and attempting to piece together the files without the metadata 
+information normally tracked by the filesystem. File carving may need to be performed during forensic investigations by law enforcement or government 
+agencies, or during data recovery operations. Usually, file carving requires determining the type of filesystem represented by the data on the disk, 
+then using this knowledge to locate and reconstruct the directory and record list held within the filesystem.
+
+
+
+----------------------Metadata---------------------------
+Metadata can be simply defined as data about data. Metadata is extremely valuable to an investigation, because it can be used to develop additional inferences about data.
+
+The most common types of metadata that are relevant to file forensics include:
+- Creation date and time
+- Program or processes used to create the data
+- Data creator or author
+- Technical standards used Location on a device where the data was created
+- File size
+- Data source 
+- Data quality
+- File modifications or programs used to modify
+
+
+Windows OS utilizes the NTFS filesystem. NTFS keeps track of four timestamps for each file record stored in the filesystem’s MFT. Three of these are accessible from the Properties tab.
+
+- File Created: The date on which the file was first created on the filesystem. 
+- File Accessed: The most recent time the file was accessed. Moving, opening, or reading metadata information about a file is considered an access and causes this value to change.
+- File Modified: The most recent time that the file’s contents were modified. 
+- MFT Last Written: The most recent time that the file’s record within the MFT was updated. This timestamp is not included within the standard Windows interface, 
+                    and necessitates direct inspection of the MFT record, usually via a forensics tool.
+
+------------------------Exchangeable Image File Format Data----------------------------------------
+
+As demonstrated, even simple metadata can be extremely useful during an investigation. The steps below introduce Exchangeable Image File Format (EXIF) data,
+which is commonly embedded within pictures. Criminal investigations that involve photographs can make good use of EXIF data, since it normally contains 
+information such as the following:
+- Camera make and model used to take the picture
+- Geographical coordinates of where the picture was taken
+- Editing software used to manipulate the picture
+- Image dimensions
+
+commands :
+exiftool ~/Documents/stuff/DSCN0038 : gives alot of images info
+stat ~/Documents/stuff/DSCN0040 : gives little info : Access: The most recent time the file’s contents were accessed
+                                                      Modify: The most recent time the file’s contents were modified
+                                                      Change: The most recent time the file’s record was changed within the filesystem
+                                                      Birth: The original time the file was created
+
+------------------------File Headers------------------------
+
+ile header is a chosen location, usually found at the beginning of a file, which is used to store metadata specific to a given file format.
+File headers and file formats are intended to help systems and applications handle any operations that need to be performed against that file format.
+
+
+------------------------Portable Executable Format------------------------
+
+ Portable Executable (PE) format is a common file format across many types of executable files on Windows systems.
+The PE format contains a compiled executable program, along with instructions for how the OS should load that program into memory. The most common file types that make use of the PE format are:
+
+- Stand-alone executables (.exe)
+- Dynamic-link libraries (.dll)
+- Device driver files (.sys)
+- Control panel items (.cpl)
+
+-----------------------PE Structure---------------------------
+PE Structure
+
+
+All PE files begin with the following three sections.
+DOS HeaderDOS was the precursor to the Windows OS. Windows continued to rely on certain portions of DOS until the release of Windows XP, so executable code had to play nice with DOS. 
+The DOS header is still present in all PE files today. DOS StubA stub is a small program or piece of code that is executed by default when an application's execution begins.
+For Windows executables that cannot be run on DOS systems, an error message This program cannot be run in DOS mode. is printed.
+PE File HeaderThis contains the actual start of the PE file, which begins telling the OS how to load the rest of the executable code into memory.
+
+ note that the DOS header starts with the characters MZ, and the PE header starts with the characters PE. The error message within the DOS stub is also clearly visible.
+If you are able to locate these three items at the start of an unknown file, it is almost certainly a PE file.
+
+---------------------Indicators of Compromise---------------------------
+Indicators of Compromise (IOC) are forensic artifacts that serve as evidence that an intrusion has occurred within a host or network. File metadata sometimes contains 
+IOC information that can aid a forensic or security investigation.
+
+PE headers can be parsed by several applications, including Windows’s default Right-click > Properties window.
+
+Other common IOCs used to aid security investigations include various network artifacts, such as IP addresses, domain names, 
+and patterns located in web Uniform Resource Locators (URL). 
+
+-------------------------------File Hashes-----------------------------------
+ file hash is a unique value that is calculated by running a file’s contents through a hashing function. Manipulating even one bit of a file is enough to change
+the entire resulting hash value, making file hashes incredibly useful for forensic and security investigations. Locating a file hash associated with a known malicious
+file is strong evidence that MCA has occurred. Hashing functions are also commonly used in many modern cryptographic algorithms.
+
+several different hashing functions in current use. Commonly-encountered hashing functions include Message Digest (MD) 5, Secure Hash Algorithm (SHA) 256, SHA512, 
+and SHA1. Figure 1.1-97 shows the Get-FileHash PowerShell cmdlet being used to calculate the SHA256 hashes of two files on a Windows machine. 
+(The sha256sum command can be used to calculate SHA256 file hashes on Linux machines.)
+
+Weaknesses have been discovered in certain hashing functions that mean that hash collisions are possible, though it is extremely unlikely. A hash collision occurs
+when two files with different contents generate the same hash. 
+
+Hash collisions have dangerous implications for any cryptographic algorithms that rely on those hashing functions.
+
+
+--------------------Registry Autorun Keys------------------------
+Registry Editor, navigate to the following registry path:
+HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Run
+
+-------------------Examining the Suspicious PE--------------------------
+did in class on VM
+
+commands:  Run the Get-FileHash command against the original FlashPlayerUpdate.exe file.
+Get-FileHash FlashPlayerUpdate.exe
+
+####################### end of operating system basics ##########################
+
+#################### scripting Primer ########################
+
+--------------------------Scripting Languages Used in This Course----------------------
+
+
+This course uses the following scripting languages, which come with their own pros and cons:
+- windows
+- batch files
+- PowerShellBash
+- Python
+
+Windows batch file format is usable on all modern versions of Windows. (for batch files end in .bat or .cmd)
+
+PowerShell is a .NET-based, cross-platform scripting solution that has native support for remote execution and is deployed by default on modern versions of Windows
+features that enable richer scripts, such as full support for object-oriented programming, creation of new cmdlets — small commands or scripts written for PowerShell,
+which typically return a .NET object  (filenames end in .ps1, however, other files used in PowerShell can have other extensions.)
+
+Bash scripting is typically used on Unix-like systems, such as Linux, MacOS, Berkeley Software Distribution (BSD), 
+Bash can be deployed to Windows systems through Windows Subsystem for Linux (WSL), Cygwin, or other similar tools
+( typically have a filename ending in .sh, though this is by convention only, and is not required. Adversaries often choose not to use this file extension.)
+Z Shell (ZSH) and other shells on Unix-like systems often have fairly similar scripting environments that may be mostly compatible with Bash scripts. Shell scripts ( zshell is like new version )
+
+Python is a programming language often use in scripting. It is cross-platform, and often installed on Unix-like operating systems as well as being deployed on Windows workstations and servers where it is a dependency. 
+ has a rich package system available with pip. (Python scripts traditionally end in .py, however, this is not necessary and an adversary can choose not to use this file extension.)
+
+------------------------Script Editing--------------------------------
+
+ features that can help make the creation of scripts easier, such as:
+
+- Syntax Highlighting: Changes the color of text to indicate the category of item that is represented by that text.
+- Autocompletion: Allows the editor to provide probable completions to the text currently being entered (based upon the syntax of the scripting language in use), which can speed up development.
+- Debugging: Allows the pausing of execution of a script or program to view the current state of the environment or manually direct program flow.
+- Script Execution via Hotkey: Executes the script being edited via selecting a button or hotkey, allowing for more rapid execution and development.
+
+Throughout this course, the following editors may be used (not exhaustive):
+
+- Notepad: A simple text editor included in Windows by default; only supports editing.
+- Gedit: The default editor for Gnome; included by default on some Linux distributions. Supports editing and syntax highlighting for any included languages.
+- Nano/Pico: A simple, easy to use command line text editor, commonly available or able to be installed on Unix-like machines. Only supports basic editing, however it may support some syntax highlighting.
+- PowerShell ISE: Integrated into some versions of PowerShell; supports all these features and many more, such as block code execution (executes a highlighted block of code) and help files for PowerShell features.
+- Sublime Text: Included on some machines used during this course; supports syntax highlighting for some scripting languages, and limited autocompletion. Plugins may be available to support other features.
+- Notepad++: An open-source text editor with many features similar to Sublime Text. Supports highlighting for some languages, and supports additional languages via plugins or editing the configuration.
+- Visual Studio Code: This editor behaves as a full-blown Integrated Development Environment (IDE) for many languages — either natively or via plugins. It supports many features to assist development, 
+  such as syntax highlighting, autocompletion, debugger support, and many hotkeys and configurations to assist development.
+- Vi/Vim: While this command line text editor has rich configuration support, if used during this course, it is generally used as a basic text editor. 
+
+--------------------------Reviewing and Executing an Existing Script---------------------------------
+
+-eq is a comparison operator that returns true if the value on the left and right are equal. More comparison operators are covered later in this lesson.
+param() is used at the top of a script to indicate named parameters that this script accepts. If no parameter is passed in, the value of the variable is $null.
+while() a while loop continues executing until a specific condition is no longer met (i.e., until the expression being evaluated returns false). 
+:: is used to execute static methods of .NET classes. In this case, the [string] class has a method named 
+IsNullOrEmpty that checks if a supplied string is null ($null) or a string with no characters.
+read-host is used to read input from the console with an optional prompt.
+
+
+
+
+
+---------------------Execution History-------------------------
+
+
+Many consoles or terminals store execution history. This can be a useful artifact when performing forensics or for sensors to read. While a malicious actor 
+can often trivially clear the history on a machine, if this log is present, it can still be a useful artifact to be examined.
+
+Bash’s history file is present at <userhome>/.bash_history
+
+owerShell — since 5.0 — has a default location at %APPDATA%\Microsoft\Windows\PowerShell\PSReadLine\ConsoleHost_history.txt.
+
+C:\windows\temp\mw1.ps1
+binary path
+mw1.ps1 is the binary.
+C:\windows\temp\ is the path.
+
+
+--------------------persistence--------------------
+
+persistence consists of techniques that adversaries use to keep access to systems across restarts, changed credentials, and other
+interruptions that could cut off their access. In the MITRE Adversarial Tactics, Techniques, and Common Knowledge (ATT&CK)
+framework, which is used in this course, this has an Identifier (ID) of TA0003. 
+
+the MITRE ATT&CK framework, this corresponds to T1547.001 — Boot or Logon Autostart Execution: Registry Run Keys / Startup Folder
+— which consists of multiple readily-detectable methods usable by attackers on Windows.
+
+-----------------Script Creation---------------------
+
+When creating or prototyping a new script, there are many methods for determining the best path forward, however these methods generally boil down to:
+
+- State the problem clearly. This step is vital to ensure that the correct solution is sought out.
+- Determine a big picture solution to the problem.
+- Break the solution down into individual steps that can be performed. If unable to do so, reconsider the solution or research as necessary.
+- Determine how to perform each step in the target language, adjusting overall flow or structure as required based upon feedback here. For steps with many or complex parts, 
+  this may require following this process starting back at the beginning for that particular step.
+- Test and deploy the script.
+- Clean up and/or revise as necessary.
+
+
+
+--------------Common Language Features-----------------
+data types: 
+Many languages include the following data types or analogs to these data types:
+- String: This data type consists of individual characters, often laid out sequentially in memory 
+- Integer: This data type corresponds to a numeric, whole number, value. The maximum value that can be stored varies based on the platform and/or language. 
+- Array/list: Also known as lists in a scripting context, this collection type can store multiple values
+- Float: Floating point number — a number with a decimal point attached. This data type can store both very small and very large numbers due to its ability to move the decimal point — thus a floating point.
+- Boolean: Value that represents true or false. Often used to control program flow, such as with if/then statements. {}
+
+Variables: 
+Variables are a core feature of most scripting languages. This feature allows the storage of a value, and then overwrites this value with a new value,
+   
+example: number = 1
+         number = number + 1
+what we type = what we want it to be 
+maybe need $number = 1
+
+Input/Output: 
+- Console: The console can often be read from or written to.
+- File: Scripting languages can often read from or write to files.
+- Registry: Scripting languages on Windows may be able to read or write to the registry. This may require the use of external binaries.
+- Command Line Arguments: Many scripting languages allow command line arguments to be read, and command line arguments can be supplied to other scripts or applications.
+- Network: Scripting languages — either natively or through invoking of external code — can allow a script to connect to other machines via networking to send or receive
+           data. This can take the form of Hypertext Transfer Protocol (HTTP) requests, Transmission Control Protocol (TCP) connections, or other lower-level connections. 
+
+Loops/Iteration:
+A simple loop might look like this:
+
+for line in lines:
+    print(line)
+
+This loop iterates over multiple items
+
+prints the numbers from 0–9. Note that it is still iterating over a set of values. Some languages support separate conditions for the basic for loop:
+
+for x in range(10):
+    print(x)
+
+
+nitialization block ($x = 0) is executed first, and is often intended to be used to initialize a variable to be used in the for loop itself. 
+The condition block ($x -lt 10; note that -lt is a less than operator) is an expression that returns a Boolean value (i.e., true or false).
+The iteration block ($x++; note that $variable++ is used to increment a value by 1 in this example) is executed after each time this for loop 
+is executed, and is intended to be used to change the value of one or more variables being used in the condition block. 
+
+for ($x = 0; $x -lt 10; $x++)
+{
+    Write-Output $x
+}
+
+In addition, some languages have a similar construct, known as do…until,
+which behaves in a somewhat similar way. The syntax of this might resemble:
+
+i = 0
+while i < 10:
+    print(i)
+    i = i + 1
+some languages have a similar construct, known as do…until
+
+i = 0
+do {
+    print i
+    i++
+} until i = 10
+
+
+This mimics the behavior of the above for loops. While loops can 
+also branch based upon more complex behavior, such as;
+
+done = False
+while not done:
+    # perform work
+    done = validate() #method that determines if more work exists
+
+
+Branching Logic:
+
+Being able to control the flow of the execution of a script or program is a fundamental feature of any scripting language. 
+This can take the form of if/then statements, switch statements, etc. These statements alter which line is executed next,
+allowing conditions to alter or direct program flow.
+
+ code block entered depends on what x evaluates to — x can either be a Boolean value, or an expression that evaluates to a Boolean value
+
+ if x:
+    print("x is true")
+ else:
+    print("x is false")
+
+if x:
+   print("do something with this code path")
+
+switch(x){
+    case 1:
+        print "x is 1"
+    case 2:
+        print "x is 2"
+    default:
+        print "unhandled case"
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+########################## end of day 1 ##############################
+
+
+
+
+
+
+
+
 
 
 
