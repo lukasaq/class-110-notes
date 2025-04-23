@@ -1,4 +1,5 @@
- range-isms, are called out periodically in lessons to remind you of their presence. You must ignore or avoid interacting with these items.
+
+range-isms, are called out periodically in lessons to remind you of their presence. You must ignore or avoid interacting with these items.
 interacting with them may cause the range to fail and require a redeployment. Some of these range-isms include:
 ..........
 The 10.0.0.0/8 subnet is used for range management and configuration.
@@ -20,7 +21,341 @@ ruby.exe on Windows and ruby on Linux
 -----------------------------kernel and user modes-----------------------------
 There are two modes of operation built into a system’s CPU: user mode and kernel mode.
 
-kernel most privaledage
-user basic privaladge
+ kernel:  kernel mode, the code being executed by the CPU has unrestricted access to all of the system’s hardware. 
+          This access includes the ability to execute any CPU instruction and access any memory address
+
+user:     user mode, the code being executed can only run a limited set of safe instructions
+
+
+----------------system calls & Libray calls ---------------------------------
+
+example: example, a program needs access to the system’s memory and CPU in order to execute, and may also require the ability to read or write files to disk, send data across a network link, 
+or communicate with an external peripheral device. In order to solve this problem, client applications must ask the OS for help by making a system call (or syscall)
+
+difference between system calls and library calls. A library is a software module that implements some functionality and makes that functionality available to other programs by exposing it through an interface.
+For example, most OSs and programming languages are shipped with an embedded networking library
+
+----------------------Protection Rings---------------------------
+rings 0-3
+ring 0: ring 0 represents the operations with the highest privileges over the system (CPU kernel mode operations)
+ring 3: ring 3 is used to represent CPU user mode operations
+
+------------------------------the kernel-------------------------------
+
+ kernel is the aptly-named central component of the OS. During the system’s boot process, the kernel program is loaded into a protected area of memory and remains loaded as long as the system is powered on.
+ Unsurprisingly, most kernel code executes in kernel mode within the CPU.
+
+kernel capabilities
+- Process management
+- Memory management
+- File management
+- Peripheral and Input/Output (I/O) device management
+- Security management
+
+------------------------------Process Structure in Memory--------------------------------------
+
+- Text: Contains the machine instructions loaded from the executable. This is the actual set of instructions that the CPU executes.
+- Data: Stores any variables that were initialized by the programmer or compiler. The initialization process requires the compiler to know 
+  how much memory is needed to store the variable, as well as the initial, non-zero value of the variable.
+- BSS: Used to store variables that have been instantiated, but not initialized. 
+- Heap: Used to dynamically allocate memory for variables whose sizes cannot be known until runtime,
+- Stack: Last In, First Out (LIFO) data structure used to store stack frames, which contain information about the current  execution sta te of the process.
+  If a process has multiple threads, each thread is given its own stack.
+
+
+-------------------Lifecycle of a Process-------------------------
+
+There are five main states that a process can be in, though specific OSs may use more granular states than those described.
+
+- When in the Created or New state, processes are waiting to be loaded into main memory (Random Access Memory [RAM]). The OS has not yet allocated system resources to the process, 
+  or is just beginning to allocate these resources.
+- A process in the Ready or Waiting state has been fully loaded and is waiting to be scheduled for execution. Multiple processes are generally in this state at a given time.
+- A Running process is one that is currently running on one of the CPU’s hardware cores, in either kernel mode or user mode. Processes scheduled to run in the CPU do so for a short while,
+  before being swapped out with another process that is in the Ready state. A Running process that is swapped out of the CPU generally returns to the Ready state.
+- A Blocked process is waiting for an event that is outside of its control to occur. For example, a process that is waiting for an incoming network connection might be in the Blocked state while 
+  it waits for the connection to occur. Upon receiving the connection, the OS moves that process from Blocked to Running so it can handle the incoming connection.
+- A Terminated process has completed its execution, or was explicitly killed by some other process or system action. Killing a process is a common phrase when discussing process termination.
+
+
+
+
+
+
+------------Process Identifiers--------------------
+process is created — also referred to as spawning a process — the OS assigns that process a number in order to identify that process within the system. This number is known as a PID.
+                   note about PIDs is that they are unique only for currently executing processes within a single system — two different systems may assign the same PIDs to different processes,
+                        and a system may reuse a PID if it is not currently being used.
+
+kill command: the kill command can be used to terminate a process on a Linux machine, but must be given the PID of a process in order to take action upon it.
+
+
+
+----------------------Process Trees---------------------------
+
+
+Daemon processes
+
+ root process is responsible for loading every other process necessary for the system to function. Usually, 
+the root process delegates some of these responsibilities by spawning other processes known as daemon processes,
+or daemons, which manage certain components across the entire OS
+
+           - On Windows machines, daemon processes are referred to as services
+
+
+
+-----------------------Windows | Core Processes----------------------
+in class we worked in vm and ran commands tasklist in windows vm.
+command :C:\Users\trainee>tasklist
+
+-------------------------Core Processes | Linux---------------------
+
+in class we worked in vm and ran commands tasklist in linux vm.
+command ps -Hwwfe
+
+
+--------------------Memory Management--------------------------
+
+During process creation, the kernel allocates memory to a process — this memory contains the stack, heap, data, text, and BSS sections as described earlier. 
+The kernel is responsible for managing the usage of most of this memory during the lifecycle of the process.When a process terminates,the kernel is responsible for deallocating and
+memory that was used by the process,freeing it up to be reallocated to other processes.
+
+
+
+
+
+-------------------Virtual Memory------------------------
+
+Virtual memory is a memory management technique used by modern OSs in order to more effectively manage and secure this key system resource. During process creation, 
+a program and any system libraries it relies on are loaded into the process’s virtual memory. When this process later needs to access or change data held in its virtual memory, 
+it does so via a virtual memory address — the location of the data in its virtual memory. Dedicated hardware known as the Memory Management Unit (MMU) 
+translates these virtual memory addresses into physical memory addresses — actual locations within physical memory such as RAM. To the process, its virtual memory is
+always present and is always arranged contiguously. 
+
+
+-----------------------Memory Paging------------------------
+
+Using a virtual memory scheme, an OS can allocate a sizable chunk of memory to each process running on it. Usually, the amount of memory allocated to each process is a significant
+portion of the system’s actual physical memory — RAM, in this case.
+
+how it works : Memory paging or memory swapping refers to a technique where inactive virtual memory is saved to a secondary storage device, such as a hard disk, when it is not in use.
+
+certainly can provide increased efficiency and speed across a system, there are instances where the amount of overhead far outweighs the benefits conferred
+
+Windows stores all inactive memory pages inside a page file named pagefile.sys. The default location of this file is located in the root directory of the disk (i.e., C:\pagefile.sys).
+
+Linux instead uses the term swap space to refer to the locations on the disk where inactive memory pages (also known as swap files) are stored. 
+
+
+------------------------File Management---------------------
+
+defines a format for organizing, storing, and tracking files. To do this, the filesystem tracks some metadata information about each file, 
+in addition to that file’s actual contents. The tracking of this metadata is done within a record for each file present within the filesystem
+filesystems maintain a directory to quickly look up the record of each file in the filesystem. A filesystem's directory and list of records exist
+in a reserved portion of the filesystem. Many filesystem implementations exist; they differ in size, speed, security, functionality, and other factors
+
+-------------------------Filesystem Internals------------------------------
+
+When the kernel receives a request to access a file, it searches through the filesystem’s directory for the appropriately named file, using the directory to determine 
+the location of that file’s associated record in a record list. From the file’s record, the kernel can retrieve metadata information about the file, which includes 
+the physical location of the file’s raw data held within the computer’s hard drive.
+
+-----------------------Metadata in Filesystems--------------------------------
+
+Filesystem metadata is stored within a file’s record. This metadata may include the file’s physical location on disk, its size, any associated permissions, and a set of timestamps describing when
+a file was last modified, accessed, or created. Different filesystem implementations keep track of different metadata information
+
+Filesystem metadata is a fantastic source of information about the system. Later in this lesson, filesystem metadata is used as an evidence source for a simple investigation.
+
+-------------------------Virtual Filesystems------------------------------
+
+Virtual Filesystem (VFS) is an abstract layer that lies between client applications and the concrete filesystem. A VFS is usually implemented as a kernel module within the OS kernel, 
+and defines a common language that client applications and filesystems can use to communicate, regardless of the specifics of the underlying filesystem. 
+
+
+----------------Types of Filesystems--------------------------
+
+
+Windows Filesystems 
+-------------------
+File Allocation Table (FAT):  basic filesystem that uses a specific construct to reference files stored on a disk. FAT comes in several variants, the oldest of which,
+                              FAT8, has been around since the 1970s. FAT12, FAT16, and FAT32 are updated versions of the FAT filesystem, and support increasingly larger disk 
+                              sizes, single file sizes, and longer filenames
+
+New Technology File System (NTFS): developed by Microsoft to replace FAT in Windows NT 3.1. NTFS has undergone several revisions during its lifetime, and provides several enhancements
+                                   to filesystem performance, efficiency, capacity, resilience, and security. NTFS is still the most common filesystem in use on Windows OSs.
+
+                                   can more easily deal with problems caused by unintended interruptions, such as a power outage.
+
+                                   big reason behind the change from FAT to NTFS is that NTFS natively implements security mechanisms that allow for access controls to be applied directly within the 
+                                   filesystem. NTFS contains two Access Control Lists (ACL), which are associated with each file or directory; the Discretionary Access Control 
+                                   List (DACL) and the System Access Control List (SACL)
+
+DACL: DACL is responsible for implementing basic permissions that define which users and/or groups can perform actions, reading, writing, execution, or deletion of a file or folder
+SACL: SACL is responsible for determining how the system should audit attempted actions being performed against a file or folder as well as whether those actions succeeded or not.
+
+MFT: Metadata about files and directories within an NTFS are stored in a database known as the Master File Table (MFT), which also serves as the directory for the filesystem. The MFT is an extremely
+     important evidence source that can be utilized to investigate a system that uses NTFS.
+
+---------------------------Resilient File System----------------------------
+
+Resilient File System (ReFS) is another filesystem developed by Microsoft, intended to be the next generation Windows filesystem
+to replace NTFS. According to Microsoft, ReFS was designed to maximize data availability, scale efficiently to large data sets 
+across diverse workloads, and provide data integrity with resiliency to corruption
+
+
+
+
+------------------------Extended Filesystem----------------------------
+Extended Filesystem (ext) was created one year after the initial release of the Linux OS. Soon after, ext2 was released and quickly became the default filesystem 
+for use in most Linux distributions. The ext3 filesystem was the first in the ext line to implement journaling capabilities, and ext4 further expanded the functionality
+provided by ext3. Improvements in ext4 consisted of large filesystem support, improved resistance to fragmentation, higher performance, and improved timestamps
+
+
+
+------------------------XFS----------------------------
+XFS is the default filesystem for Red Hat Enterprise Linux — a common Linux distribution. It offers similar features to ext4
+
+
+--------------------------ZFS--------------------------
+ZFS is considered a next-generation filesystem because of several fundamental changes in its approach to storage volume management. 
+According to Wikipedia, ZFS was designed with a focus on data integrity, and offers several highly-advanced features that meet this design goal
+
+
+---------------------Index Nodes-------------------------------
+
+Linux kernel supports a large variety of filesystems compared to other OSs. This is because of a construct called the index node (inode) that exists 
+as an abstraction layer within the Linux kernel. Inodes are an integral part of the Linux kernel; all file management behavior within Linux OSs deals directly 
+with these inodes, requiring only that the Linux VFS perform small translation steps between the Linux kernel and the underlying concrete filesystem.
+
+The behaviors made available by inodes include the creation of hard links and symbolic links, which themselves can be used in fairly interesting ways.
+
+
+-----------------------Hard Links---------------------------------
+
+When a regular file is created on a Linux machine, the filesystem creates a new record for the file within its record list,
+and provides a unique ID number back to the Linux kernel. The kernel uses this ID number as the inode ID; the inode ID number is used by the 
+kernel to perform operations against the file located on the filesystem.
+
+Making a hard link to a file creates a new file as normal, but instead of its own inode, the hard link directly references 
+the inode of a different file. Follow the steps below to explore the properties of hard links
+
+commands hard link: 
+cd ~/tmp
+echo "Hello, world." > regular_file
+ln regular_file hard_link_example
+cat hard_link_example
+stat regular_file
+stat hard_link_example
+rm ~/tmp/regular_file
+cat hard_link_example
+
+------------------------Symbolic Links----------------------------
+
+Symbolic links, also known as symlinks or softlinks, reference a file by that file’s name and location on the filesystem, rather than its inode value.
+Advantages of symlinks include creating a link to directory locations, and to files or directory locations located on a completely different filesystem.
+
+Unfortunately, symlinks do have a drawback; because a symlink does not reference an inode value, moving or deleting the target of the symlink 
+breaks the symlink.
+
+commands symbolic link: 
+rm ~/tmp/hard_link_example ( from hard link commands)
+echo "Hello, world." > regular_file
+ln -s regular_file symlink_example
+stat regular_file
+stat symlink_example
+cat symlink_example
+rm ~/tmp/regular_file
+cat symlink_example
+echo "Catch you later, world!" > regular_file
+Run the ls command to verify that the file was created successfully.
+
+------------------------Symlink Chains---------------------------------------
+symlinking to a file that is already symlink basiclly 
+
+---------------------Network Management-----------------------------
+
+Network devices or network interfaces are specialized hardware peripherals that enable the transmission of data between two or more systems.
+In modern systems, basic networking interfaces are usually built directly into that system’s hardware. 
+
+
+------------------Sockets---------------
+
+A socket is a virtual construct that acts as the endpoint for a communication link on the system. Many sockets can be open on the system at a given time.
+A client application that is running on the system can request a socket from the kernel, and use system calls to read or write data to the socket.
+
+Socket System Calls:
+- bind: The application requests the kernel to bind a previously instantiated socket to a network port or to a local file.
+- isten: The application puts the socket into a listening state, meaning that the client application using the socket is actively ready to handle incoming connections
+- accept: The application accepts an incoming connection to a listening socket. 
+- connect: The application uses the socket to establish a connection with a different listening socket, which may be on the local system or located on some external network.
+- recv or recvfrom: Short for receive. The application reads data from the socket. The recv syscall can be used as a shortcut by certain applications that have already established 
+  a connection with another socket; recvfrom is used otherwise.
+- send or sendto: The application sends data over the socket, which is transmitted to the corresponding socket on the other end of the connection. The send syscall is used as a shortcut
+  by certain applications that have already established a connection; sendto is used otherwise
+- The application closes the established connection. This may be performed by the listening socket or the connecting socket, and is mainly needed to close TCP connections; 
+  UDP communications do not maintain the concept of a connection, so there is nothing to close.
+
+Exploring Socket Connections:
+commands:
+nc -v -l -s localhost -p 10000
+nc localhost 10000
+netstat -ntu
+ss -ntu
+ifconfig
+
+--------------Additional Kernel Capabilities---------------------
+
+The kernel capabilities described below do not necessitate as much detail as the other capabilities you just reviewed. 
+
+---------------------Security Management-----------------------
+
+Security management is handled by a kernel component known as the security subsystem or security kernel. This portion of the kernel implements basic security procedures within the system.
+
+-----------------Kernel Drivers---------------------
+
+As stated earlier, the minimum capability required for a kernel to operate is the ability to facilitate the execution of software instructions on the system’s hardware.
+
+
+------------------------Everything is a File-------------------------
+
+Unix-like OSs are built with the idea that everything is a file. While this is not true in the literal sense, it speaks to an embedded feature of various Unix-like OSs — many system resources 
+are exposed to the system’s applications via file descriptors. These file descriptors allow other applications to interact with a large variety of different resources in the same way that 
+they would interact with a regular file.
+
+----------------------Types of Kernels---------------------------
+
+Linux uses a monolithic kernel approach — the entire OS was designed to run in kernel mode. In contrast, Windows uses a hybrid kernel approach — the OS was designed such that many 
+larger components, such as the environment subsystems and OS-integral subsystems, run in user mode.
+
+A third approach, known as the microkernel approach, is utilized by some other OSs. The microkernel approach moves as much functionality as possible into user mode execution — except for a very small core kernel.
+
+
+-------------------------Windows Registry----------------------------------
+
+Windows OSs make use of a construct called the registry to store system and user configuration information. The registry is a hierarchical database that stores information in key:value pairs, 
+persists through system reboots by being saved to the system’s hard disk, and quickly referenced by both user mode and kernel mode processes running on the system. 
+
+navigate when using regedit: HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\RegisteredOwner registry key
+                             HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\ProfileList
+                             HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\NetworkList\Profiles.
+
+Profilelist:
+folders listed under the ProfileList folder represent the different users located on the system. Within the Windows OS, user accounts are assigned a unique Security Identifier (SID) 
+that is used to identify their user profile across the system. The first three SIDs are present on all modern Windows systems; they represent users that are used by the OS to launch
+certain system services and OS-level tasks. Regular user accounts with no special OS use begin with S-1-5-21.
+
+Profiles key:
+Profiles key contains a list of Globally Unique Identifier (GUID) values, which are present throughout the Windows OS. Windows uses GUIDs to refer to unique objects within the system, 
+though GUIDs are not guaranteed to be unique across systems. In this case, each GUID represents a different network profile that this machine has been connected to. 
+
+
+--------------------------OS Fundamentals | Conclusion-------------------------
+
+
+
+
+
+
+
 
 
