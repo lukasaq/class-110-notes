@@ -1,267 +1,114 @@
 ####################### start of day 2 ##########################
 
-  
+  -------------------OSI Model Layers and Devices------------------
 
+OSI model describes and standardizes the functions and characteristics of communications across various devices, media, and abstractly between applications. 
 
 
+--------------------OSI Layer 2 Devices--------------------
 
+Devices that operate on layer 2 of the OSI model, or the Data Link Layer in the TCP/IP protocol stack, perform switching operations on frames. Each frame contains 
+addressing associated with a hardware Network Interface Controller (NIC) (Destination Media Access Control [DMAC] address and Source Media Access Control [SMAC] address)
 
+ common devices that operate at this layer are switches and bridges. Both of these devices include a Media Access Control (MAC) address table, known as a Content Addressable
+Memory (CAM) table, that tracks which MAC addresses are associated with each port on the switch. 
 
+Multiple layer 2 devices may be connected together in such a manner that loops could be created. To prevent an overwhelming amount of transmitted frames — also known as a broadcast
+storm — most layer 2 devices use a protocol like Spanning Tree Protocol (STP) to identify themselves to the other devices they may be connected to. 
 
+Layer 2 protocols do not have a Time To Live (TTL) value to indicate when a frame should no longer be forwarded so it is important to ensure there are no loops as a frame could be endlessly forwarded. 
 
+----------------------OSI Layer 3 Devices------------------------------------
 
+Devices that operate on layer 3 operate on packets. These packets are routed between networks
 
+Layer 3 devices separate broadcast domains — or networks. Any device that operates on layer 3 is a router. 
 
 
+----------------------IP Network Components---------------------------------
 
+IP networks have several components and terms:
 
+- Network Identifier (ID) (also sometimes known as subnet ID): Portion — # of bits — of an IP address that designates the network on which a host resides — also the base IP address in a network
+- Host ID: Portion — # of bits — of an IP address that designates the host within its network
+- Subnet mask: Mask that specifies which bits are network (binary one) and which bits are host (binary zero)
+- Broadcast address: Last IP address within a network that is reserved to address all hosts in the same network
+- Gateway (also known as next-hop): IP address assigned to a layer 3 device — router — that connects multiple networks together and can route packets between them
+- Default gateway: Layer 3 device used for routing when there is not a more specific gateway specified in the routing table
 
 
+vast majority of hosts on the internet still use Internet Protocol version 4 (IPv4) and have not yet migrated to the newer Internet Protocol version 6 (IPv6). 
 
+-------------------------Public and Private IP Addresses--------------------------------
 
 
+image
 
+-------------------Windows Networking---------------------------
 
+done in vm
+commands:
+ipconfig /all
+reg query HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters
+route print
+arp -a
 
+-------------------Dynamic Host Configuration Protocol (DHCP)---------------------
 
+IP addresses can be assigned statically or requested dynamically from a centralized management server. 
+DHCP uses UDP over port 67 for DHCP servers and port 68 for clients. DHCP operations fall into four stages
 
+- DHCP server Discovery
+- IP address lease Offer
+- IP address lease Request
+- IP address lease Acknowledgement
 
+Discover, Offer, Request, Acknowledgement : DORA
 
+----------------------Subnet Review------------------------------------
 
+image saved subnet class A-E
 
+image saved subnet 1-32
 
+lab in class vm linux
+commands:
+ifconfig
+netmask 199.63.64.51/255.255.255.0
+netmask -r 199.63.64.51/24
 
 
+------------------IPV6------------------------
 
+IPv6 addresses use 128-bit addresses — represented in hexadecimal notation.
 
+ address space for IPv6 is large enough that the least significant 64 bits are used for hosts on subnets. The most significant 64 bits designate the network — or routing prefix.
 
+IPv6 addresses can be shortened in certain circumstances for clarity and readability:
+- One or more leading zeros from a group of hexadecimal digits can be removed (e.g., :0042: is shortened to :42:)
+- Consecutive sections of zeros are replaced by two colons (e.g., 2001:0db8:0000:0000:0000:ff00:0042:8329 is shortened to 2001:0db8::ff00:0042:8329)
 
+-------------------NAT/Port Address Translation (PAT) Review--------------------------
 
+NAT and PAT allow networks to use a limited number of public IP addresses to isolate and translate between a private IP addressing space that is
+used internally and the public IP addresses needed to communicate with hosts on the internet. 
 
+NAT is intended as a one-for-one private-to-public address translation 
+PAT uses a combination of inside IP address and inside source port to build the translation table.
 
 
+image saved NAT-PAT inside outside
 
 
 
+-------------------Virtual Local Area Network (VLAN)-------------------------
 
+vlan standard (IEEE) standard 802.1Q
 
 
+lab with wire shark
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+filter vlan && vlan.id==
 
 
 
