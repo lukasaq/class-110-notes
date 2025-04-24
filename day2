@@ -210,183 +210,349 @@ The final step of the OP is Assessment. During this step, the OP section assessm
 ----------------------CPT OP Exercise | Moodle-----------------------
 
 
+################### quiz ###################
 
+filter vlan && vlan.id==
 
+mission reporting > mop > achieved op obj
 
+planord and the ma product = force allocation
 
+step3
 
+PLANORD → Input,
 
+MRT-C → Input,
 
+MA results → Input,
 
+Tactical mission statement and end state → Output,
 
+Force Allocation → Output,
 
+Rules of Engagement → Output,
 
+Initial Capabilities → Output,
 
+Initial Tactical Objectives → Output
 
+step 4
+PLANORD → Input,
 
+ROE → Input,
 
+Force Allocation → Input,
 
+TASKORD → Output
 
+step 5
+Tactical Mission Plan → Output,
 
+Assessment of tactical objectives and tasks → Output,
 
+A completed mission and reporting → Output,
 
+PLANORD/TASKORD → Input,
 
+Mission Analysis → Input,
 
+MRT-C → Input
 
+PLANORD
+preliminary objectives
+intended effects
+commander's guidance
 
 
+####################### end of Operations Process ######################
+##################### Capabilities Analysis Overview ###################
 
+--------------------Capabilities Analysis Overview----------------------
 
+ Capability Analysis and Force Allocation step involves determining the mission capabilities of each element. The elements included in this process are the CPT, mission partners, and the operational planning section
 
+Capability Analysis and Force Allocation consists of the following stages:
 
+Capability planningForce 
+availability, selection, preparation
+Force presentation and available effects
+Objectives, effects, and guidance refinementCourse of action development
+CPT Rules of Engagement (ROE) development
+Assessment plan
+Service interruption coordination
+Operational Impact Validation (OIV)
 
+--------------------Capability Planning--------------------------
 
+During capability planning, the CPT must analyze the following:
 
+Planning Order (PLANORD)
+Tasking Order (TASKORD
+)Mission Analysis (MA) 
+ResultsMission Relevant Terrain in Cyberspace (MRT-C)
+Supported commander’s risk management, mission defense, and incident response plans (if applicable) 
 
+The CPT will coordinate with the operational planning section and support the commander's staff to coordinate mission rules of engagement (ROE) informed by the initial capabilities analysis. ROE in the context of CPT operations refers to the constraints and limitations under which the CPT will hunt and/or clear when MCA is encountered as agreed on by the supported network owner and the supporting commander.
 
+---------------Force Availability, Selection, Preparation--------------------------------
 
+Once CPT MA is completed, available CPT forces are examined to determine CPT mission accomplishment capability. The scope of the proposed mission and other on-going CPT requirements factor into mission element and crew selection. Specifically, CPT leadership examines the team members’ experience, proficiency, and training levels, as well as administrative readiness status against the number of personnel required to complete the mission as determined during CPT MA.
 
+CPT also analyzes available equipment based on locally-protected network or system configurations to determine necessary hardware and applications.
 
 
 
+----------------------------Force Presentation and Available Effects-----------------------------
 
+Once CPT Mission Element crews and required equipment are determined (CPT MA determines whether selected capabilities work with the supported commander’s networks and systems), the CPT leadership presents options to the operational planning section including, but not limited to, the following considerations:
 
+Tradecraft needs, constraints, or limitations
+Desired noise levels (i.e., clandestine or stealthy hunt operations versus overt and deliberately noticeable CPT presence on the network)
+Accessing or forwarding logs
+Use of native tool sets during the mission
+Inclusion of local network protection personnel during the mission
 
+--------------------Objectives, Effects, and Guidance Refinement-------------------
 
+If MA by the operational planning section or CPT determines the CPT is unable to achieve all objectives or create all desired effects as articulated in the PLANORD, the operational planning section is responsible for refining objectives and desired effects in coordination with the supported commander and CPT. Changes to or evolution of mission terrain during planning also necessitates adjustment of objectives and desired effects based on available personnel and equipment. Finally, commander’s guidance may require adjusting or refining if changes to objectives, tasks, or desired effects change.
 
 
+-----------------------------Course of Action Development------------------------------------
 
+MA products drive Course of Action (COA) development. Whether unique or standardized, COAs describe operational approaches and provide options to achieve the mission end state. A COA describes who takes action, what type of action occurs, how the action occurs (i.e., method), when and where the action takes place (i.e., timing and tempo), and why the action is required (i.e., purpose). 
 
 
+Products from COA development present alternatives including sketches allowing COA visualization by higher ranking and supported headquarters’ commanders and planners.
 
+Named Areas of Interest (NAI) or engagement areas, or additional Priority Intelligence Requirements (PIR). A well-developed COA provides identity points in time when options, or the COA itself, is no longer viable based on predetermined criteria or conditions.
 
 
+-------------------------------CPT Rules of Engagement Development----------------------------------------
 
+During this step, the operational planning section and supported commander, advised by the CPT, develop the CPT mission ROE, constraints, and restraints. Effects from CPT hunt and clear operations may potentially disrupt or degrade MRT-C performance.
 
+Actions CPTs can or cannot take should also be defined in the ROE. For example, if a system or service is known to crash when a vulnerability or port scan is run against, it may be identified as a prohibited action within the ROE. It is important to note that during hunt, clear, and enable hardening missions it is often difficult, or sometimes impossible, to clear MCA or harden terrain without some degree of service interruption.
 
 
+-------------------------Assessment Plan--------------------------------
 
 
+Assessment plan development is the responsibility of the operational planning section to effectively assess the CPT mission. The assessment plan validates the CPT plan by outlining Measures of Performance (MOP) for operational tasks and Measures of Effectiveness (MOE) for operational objectives and desired effects, and can also prove the engagement area in a deliberate defense. The assessment plan also outlines information collection requirements to enable reporting, and must include external assessment information collection requirements. The assessment plan and information collection requirements are disseminated to the CPT and supported by the commander during the final order published during the next step of the CPT operations tasking process.
 
+NOTE: Operational-level assessment is not performed by the CPT.
 
+------------------------Service Interruption Coordination-----------------------------
 
 
+Service interruptions are necessary for the deployment of passive network taps as well as any in-line, network-based capabilities, such as intrusion prevention or encrypted traffic decryption capabilities. Additional service interruptions may be coordinated for configuration changes within the MRT-C to enable CPT operations, such as deployment of agent-based capabilities, whitelisting CPT applications and scripts, modifying Group Policy Objects (GPO) to enable remote access for CPTs, enabling event log forwarding, modifying network configurations (e.g., assigning IP space to the CPT, modifying routes, creating span ports, adding Media Access Control [MAC] addresses to port security configurations, etc.), turning on NetFlow, and other network log collection. Service interruptions required to deploy CPT capabilities are planned and scheduled by the operational planning section in coordination with the supported commander and the CPT.
 
 
+--------------------------Operational Impact Validation--------------------------
 
+OIV verifies the impact of service interruptions to the supported commander’s protected networks or systems; validates CPT capabilities creating desired effects on mission partner systems from unintended or cascading effects; and captures representative data sets (e.g., databases or files; security, network, or host configurations; anticipated network traffic; etc.
 
 
+################# QUIZ ###################
 
 
 
+Your answer is correct.
+The correct answer is:
+Assessment plan development is the responsibility of the [operational planning section] to assess the CPT mission.The assessment plan uses [measures of performance (MOP)] to validate operational tasks and [measures of effectiveness (MOE)] to validate operational objectives and desired effects.
 
 
+-----------------------Mission Capabilities and Requirements------------------------------
+CPTs provide supported commanders with the three following capabilities:
 
+Discovery and Counter Infiltration (D&CI)
+Cyber Threat Emulation (CTE)
+Threat Mitigation
 
+The capabilities used during the mission depend on the mission requirements.
 
+----------------------Discovery and Counter Infiltration (D&CI)-------------------------------
 
 
+D&CI is the detection, illumination, and defeat of known or unknown threats within a secured network or system. Hunting methodologies are utilized heavily with D&CI. To be successful with missions involving D&CI capabilities, CPTs should have clear PIR and supporting Essential Elements of Information (EEI) to drive collection requirements and efforts.
 
 
 
+----------------------Cyber Threat Emulation-------------------------------
 
+CTE is the process of using known adversary Tactics, Techniques, and Procedures (TTP) to replicate real-world threats to train and measure the effectiveness of cybersecurity defenses. This capability is primarily associated with Department of Defense (DoD) red teams to highlight vulnerabilities and demonstrate operational impact for the purpose of improving cybersecurity postures. In contrast, CPTs typically employ CTE to validate defensive postures rather than to find vulnerabilities.
 
 
 
 
 
+--------------------------Threat Mitigation---------------------------
 
+In this capability, the CPT provides a comprehensive review of the mission partner’s MRT-C with a focus on threat TTPs. CPTs assess secured network cybersecurity posture and processes to identify specific threats in vulnerable areas and to provide mitigative measures. CPTs then provide a Risk Management Plan (RMP), which documents recommendations for internal and external mitigative actions to supported mission partners.
 
 
+----------------------Data Collection-----------------------------
 
+CDAs need to know the methods and tools necessary to perform collection.
+Data can be collected actively, passively, or from open-source information.
 
+Active data collection involves generating new data that does not already exist. For example, running a port scan generates new data on a host. Examples of tools used to perform active data collection include the following: 
 
+- Kali Linux: An open-source, Debian-based Linux distribution aimed at advanced penetration testing and security auditing. It comes with several active scanning utilities pre-installed.
+- Nmap: A free and open-source utility for network discovery and security auditing. Nmap also comes installed by default on Kali Linux.
+- RedSeal: A security solution that provides risk assessment, compliance auditing, and network visualization of both private network resources and resources located in the cloud. 
 
 
+Passive data collection involves data that is automatically generated or collected without user intervention, though it may require some initial configuration to set up passive data streams. Examples of data that is passively collected include log entries, net flow data, packet captures, etc. Network sensors are especially essential for passive data collection. CDAs can determine whether there is sufficient data collection coverage within a network by using DeTT&CT, a knowledge base created for network defenders to score and compare data log source quality, visibility coverage, and detection coverage against known threat actor behaviors.
 
 
+Open-source data is data that is publicly available. A good open-source resource for adversary TTPs is MITRE Adversarial Tactics, Techniques, and Common Knowledge (ATT&CK), which is a globally-accessible knowledge base of adversary tactics and techniques based on real-world observations. DeTT&CT maps detection capabilities to MITRE ATT&CK techniques.
 
 
 
 
+################### QUIZ ###############
 
 
+The correct answer is:
+Apache Server → HTTP Logs,
 
+Web Proxy Server → Connections Log,
 
+Network Sensor → Raw Packet Capture Data,
 
+Domain Controller → Security Logs
 
+The correct answer is:
+The CPT used [DeTT&CT] to score logging coverage in SACOM networks by mapping detection capabilities to [MITRE ATT&CK] techniques
 
+The most likely location that malware would be found from a phishing campaign is on the end user hosts as this is where users should be interfacing with their email clients, and the mail server as this is where emails are stored. The edge SMTP server typically does not store mail and acts as a forwarder. Users should not be checking emails and downloading email attachments from the web server, DNS server, or domain controller. It's possible that a user might save an attachment to a file server, but there are more likely locations.
 
+The correct answer is: Open source Debian-based distribution aimed at security auditing and penetration testing. → Kali Linux,
+Security solution that provides for risk assessment, compliance auditing, and network visualization of both private network resources and resources located in the cloud. → Red Seal,
 
+Free and open source utility for network discovery and security auditing. → Nmap
 
+Upon configuring network sensors within SACOM networks, the CPT gained the capability to [Passively] gather log entries and packet capture data.
 
+The CPT [Actively] gathered data when they scanning devices within SACOM networks for vulnerabilities with NMAP.
 
+To find out more about threat actors that could be behind the phishing campaign, they turned to MITRE ATT&CK, which is an [Open source] knowledge base for adversary tactics and techniques.
 
+##################### end of Capabilities Analysis Overview ###################
 
+########################### HUNT ###########################
 
+-----------------CWP and CPT Threat Hunting----------------------
+Threat hunting — also known as cyber threat hunting or hunting — is one of the four core functions of a CPT.
 
+Chapter 3 section 2 of the CWP defines hunting as ...the process of proactively and iteratively searching through networks to detect evidence of Malicious Cyberspace Activity (MCA) to gain and maintain contact with an adversary and develop the situation.
 
 
+--------------------CPT Hunting Operations-----------------------
 
+Recall the CPT Operations Process (OP) presented in the CWP (and earlier in this course during the M2L1 - Operations Process lesson). Figure 3.1-1 outlines the six steps of the CPT OP:
 
+- Objectives, Effects, GuidanceTerrain Identification & Prioritization
+- Capability Analysis & Force Allocation
+- Orders Production and Dissemination
+- Tactical Planning and Mission Execution
 
+------------------------Triggers-------------------------------
 
+Threat Intelligence: Threat intelligence can trigger a hunt operation by warning of an imminent or already-realized cyber attack, or by reporting on new indicators or adversaries that were recently seen in the wild. 
 
+Campaign Plan: CPT employment in support of Combatant Command (CCMD) campaign plans is intended to increase critical asset protection prior to operational need. Hunting for evidence of MCA on an asset prior to that asset's use can prevent an adversary's ability to monitor, control, or render that asset unusable during critical phases of CCMD's campaign plans.
 
+MCA Detection: Detection of MCA within a network may prompt further hunting operations. These operations may be employed in an attempt to discover additional MCA which has evaded detection, or to maintain further contact with an adversary that has already been discovered.
 
 
+------------------Planning---------------------------
 
+Once a CPT threat hunting operation has been triggered, the planning phases of the CPT OP (Steps 1–4) take place. These steps include determining the objectives and scope of the operation, terrain mapping, determining the Mission Relevant Terrain in Cyberspace (MRT-C) and Key Terrain in Cyberspace (KT-C), documenting Rules of Engagement (ROE) for the CPT, beginning to coordinate system access for the CPT
 
 
+ Lastly, knowledge about the MRT-C and KT-C within an environment can help a CPT focus its hunting efforts on the most relevant terrain in an environment.
 
+ a CPT should be able to answer the following questions as they relate to the hunting operation:
 
+- What is the scope and purpose of the hunting operation?
+- What does the environment look like? 
+- What evidence sources are available for a CPT to utilize during the hunt? 
+- What are the ROEs that a CPT must adhere to within the environment?
+- Who are the people that the CPT must keep involved during this operation?
 
+----------------------Tactical Planning for Hunt Operations-----------------------------------
 
+A CPT that has completed the planning phases of the CPT OP is ready to begin the Tactical Planning and Mission Execution of the hunt operation. At this point, a CPT should understand the goals of their mission, the environment/network they are operating within, the individuals and groups that they need to communicate with during the operation, and any limitations, ROEs, or contingencies that exist or need to be planned for.
 
 
+------------------------Creating a Tactical Plan-------------------------------------
 
+ lists the following items that should be documented in the tactical plan:
 
+- Physical layout
+- Logical layout
+- External connections (if applicable)
+- Critical systems (i.e., MRT-C, or KT-C, if identified)
+- Services and applications
 
+Section b.1.d: Network Environment — Threat/Adversary Model
+ This section of the tactical plan should contain information surrounding specific adversaries being targeted during the hunt, including those adversaries' TTPs, objectives, and other detailed intelligence about the adversary.
 
+Section c.1: Execution — Network/System Owner's Intent
+ This section should clearly state the desired goals of the hunt operation, as determined by the network/system owner.
 
+Section c.12: Execution — Collection Plan
+ This section documents the plan to collect data from the environment.
 
+Section c.13: Execution — Analysis Plan
+This section combines and further develops the items documented in Section C of the Tactical Hunt Planning Guide. At this point,
 
+Section c.14: Execution — Response/Incident Response
+This section details what actions are taken if, and when, MCA has been identified in an environment. This information is extremely important,
 
 
+--------------------Host Logs-------------------------
 
+Host logs are generated by the OS installed on an individual host or endpoint. A wide array of host logs are available, but not all are usable for security-focused investigation activities.
 
+The following events are a very small sample of the host logs that might be generated on an endpoint:
 
+- A process was started or stopped
+- A network connection was attempted
+- A user logged in to or logged out of the machine
+- A new device was plugged into the machine
 
+----------------------Network Logs-------------------------------
 
+Network logs are generated by applications or devices that handle network connections in some fashion, and contain information about a connection such as its source, destination, associated ports, and amount of data being transferred.
 
 
+--------------------Security Appliance Logs-------------------------------
 
+Security appliance logs are logs generated by a security appliance, an antivirus log indicating that potential malware was identified and removed, or an IDS identifying network traffic containing potential attack patterns. As the goal of many security appliances is to prevent or detect MCA, these logs are usually directly related to potential MCA.
 
 
+--------------------Appliance Logs-------------------------------
 
+This broad category of logs simply means any logs generated by an individual application. 
 
+Application logs can also be utilized for security investigations as a backup source of evidence to fill potential visibility gaps or provide more context to an investigation. 
 
+-------------------------Executing a Hunt----------------------------------
 
+uring the creation of the tactical plan, a CPT breaks the operation's key tasks into high-level hunt topics, which can then be further broken down into individual hunts. After doing this — and collecting data relevant to each hunt — a CPT is ready to perform the data analysis and investigative tasks required to execute a hunt.
 
 
+----------------------The Threat Hunting Loop-----------------------------
 
+In The Threat Hunting Reference Model publication series, Sqrrl presents the Threat Hunting Loop as a way to tactically implement a hunt. It consists of four stages that guide an analyst or team of analysts through the execution of a hunt.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+create hypotheses
+inestigate via tools and techniques
+incover new patterns and ttps
+inform and enrich analytics
+ 4 that loop above
 
 
 
