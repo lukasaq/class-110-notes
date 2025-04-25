@@ -155,42 +155,111 @@ PS C:\Windows\system32> Enable-NetAdapter -Name "Ethernet0"
 
 ###############start of enable Hardening################
 
+-----------------Enable Hardening------------------------
+
+Mission Relevant Terrain in Cyberspace (MRT-C) and Key Terrain in Cyberspace (KT-C) are an especially important focus during the hardening phase. MRT-C and KT-C will be determined during mission planning.
+
+-------------------Relevant Cybersecurity Principles-----------------------
+
+There are several SPs that a CDA may find useful while hardening within the SP 800 series including, but not limited to:
+- SP 800-53: Catalog of security and privacy controls for federal information systems 
+- SP 800-40: Relates to patch management
+- SP 800-41: Relates to firewall configuration
+- SP 800-123: Relates to central server security
+
+-----------------------------------
+
+Get-WmiObject Win32_Product | Select-Object Name, Version
+
+PowerShell is a powerful object-oriented scripting language tightly integrated into Windows OSs and is covered in depth in a later lesson.
+
+
+Get-ItemProperty HKLM:\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\* | Select-Object DisplayName, DisplayVersion
+
+
+---------------------------------------
+
+
+the goal of assessing is to conduct Cyber Threat Emulation (CTE). CTE assesses the current security posture by emulating known adversary Tactics, Techniques, and Procedures (TTP) to validate the current defensive measures. CTE is outside the scope of this course.
+
+MOPs determine whether operational tasks were satisfied to create the desired effect.
+
+MOEs determine whether the desired effect achieved operational objectives.
+
+More concisely, MOPs track progress towards creating the desired effect, and MOEs evaluate if that desired effect achieved operational objectives. MOEs can be considered as bullets and MOPs can be considered sub-bullets.
+
+
+While the CPT OP focuses on mission at an operational level, CPTs do not function at an operational level during day-to-day tasks. They do function at a tactical level however. When the Operational Control (OPCON) Headquarters (HQS) Operational Planning element provides operational level MOEs and MOPs, the CPT will use them by converting them into tactical level MOEs and MOPs. This involves turning operational level MOPs into tactical level MOEs, and developing new tactical MOPs that would correspond to the MOEs. The new tactical level MOEs and MOPs will be used by the CPT to conduct tactical assessments during and after the mission execution phase.
+
+
+Tactical assessments can fulfill the objective of assessing the effectiveness of response actions, and therefore play a part during the assess function.
 
 
 
 
 
+Mission Statement: The CPT conducts proactive Defensive Cyberspace Operations (DCO) and Incident Response (IR) in support of counter-APT28 operations throughout SACOM networks in order to prevent enemy forces from gaining a foothold in critical SACOM systems.
+
+End State: Deny APT28 from access into SACOM networks with local network defenders capable of preventing future incidents. SACOM networks are secure and fully functional.
 
 
 
+Since CPTs only function at the tactical level, the MOPs become the new MOEs. Note that the MOPs in the above table populate the MOEs in the following table. The CPT decides how to accomplish their MOEs by developing new MOPs.
 
 
 
+The CPT continuously references these MOEs and MOPs during mission execution, and post-mission execution to ensure they effectively conducted operations and completed their key tasks. 
 
 
+The Cyber Defense Analyst (CDA) may decide that a MOP should be broken down and converted into a MOE. New MOPs are developed to satisfy the MOE. For example, using the MOP from the second row of the above table:
+
+imgaes:
+mop-moe1
+mop-moe2
+mop-moe3
 
 
+Consider tactical output from mission execution:
+- Situational Reports (SITREP): SITREPs are routinely generated to provide updates to higher elements on a daily, weekly, per-phase, or on request.
+
+- Tactical Assessments: Tactical assessments are low-level assessments that often contain their own MOEs and MOPs
+
+- OPNOTEs: OPNOTEs are in-depth and technical about the events that occur during mission execution. However, OPNOTEs contain very specific timestamps and events rather than a high-level summary. When more detail than a high-level summary is needed, consult the OPNOTEs.
+
+In addition, OPNOTEs are helpful in developing a execution timeline including, but not limited to:
+
+- Health and Status Reports: US government agencies publish health and status reports on a regular basis to aid with situational awareness of current operational activities, which enables the capacity to build, defend, and operate in cyberspace. These reports have a variety of functions, but they are useful in establishing past trends and assess their impact on the mission partner’s network.
+
+- Cyber IR Reports: DoD agencies must abide by the cyber incident handling program defined in the Chairman of the Joint Chiefs of Staff Manual (CJCSM) 6510.01B. This document outlines a specific IR report template. The completed reports are stored in the Joint Incident Management System (JIMS) on Secret Internet Protocol Router Network (SIPRNet). Past incidents provide a historic picture of the network as well.
+
+-------------------Gathering Supporting Documentation-------------------
+
+There are various documents that can go in the report body, but remember that mission execution results in large amounts of data. Select documentation that appropriately supports the written narrative
+
+- Logs: Log entries often support the conclusion that an intrusion occurred.
+
+- Configurations: Configurations shed light on vulnerabilities from bad configurations. If a weakness in configuration exists, then including the configuration can support the report body.
+
+- Command output: Was something noticeable only because a specific command was run? For example, was there malware initiating a connection to the internet reflected in Network Statistics (netstat) output?
+
+- Screenshots: At times, include a screenshot instead of text as there may be a visual elements to the data (e.g., Kibana dashboards).
+
+- File inventory: Since binary files are not well represented in text, rather than including the binary file output, include a list of files that came up during the mission, their file hashes, and where to find the file. Files to inventory include packet captures, malware, images, and memory snapshots.
 
 
+Some documents that would support the narrative and are beneficial to include in the final assessment report include:
+- Kibana log entries that demonstrate a TCP SYN scan
+- Kibana log entries indicative of a SQL injection attack
+- Event logs relating to administrator workstation compromise
+- Screenshot of the registry entry for malware persistence
 
+Point of Contact (POC): Include the CPT designation and a POC for the report in case there are any questions about the content.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+- Assessment Summary: This is an evaluation summary and is the most important part of the report. 
+- Report Body: The report body includes the assessment criteria and a narrative detailing when the criteria was (or was not) fulfilled.
+- Recommendations and Mitigations: While building the timeline, take notice if the CPT did not fulfill a MOE/MOP. 
+- Appendices: Supporting documentation for the report body is included in this section. 
+- References: Include supporting documentation for the mission, including but not limited to the OPORD, threat intelligence reports, health and status reports, etc.
 
 
 
