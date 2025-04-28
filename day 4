@@ -289,9 +289,47 @@ When defining the OE, start with the three layers of cyberspace:
             The logical network layer consists of all the data — whether resting, moving, or being used in the physical network layer. The logical network layer is based on the programming or software that drives network communications,                    interactions, and connectivity            
   Cyber-Persona
           The cyber-persona layer is a view of cyberspace created by pulling artifacts and data from the logical network layer to describe actors and entities that utilize the network. The cyber-persona layer consists of network or IT user               accounts, whether human or automated, and their relationships to one another.
+#################### end of Terrain Identification ###########################
+###################### start ofDetailed Threat Assessment Report ###############################
+
+-------------------Detailed Threat Assessment Overview-----------------------
+
+detailed threat assessment report is a tool utilized by organizations to properly measure organizational readiness for probable threat actors, based on historical attacks. Detailed threat assessments are granular and can be assembled in preparation of, or after, a security breach.
+
+he goal of a detailed threat assessment report is to identify assets and information that might be affected during a cyber attack. Included in the report is information regarding:
+
+Threat actors
+Events
+Anomalies
+Vulnerabilities 
+Assets of interest to be compromised 
+
+-----------------Timeline of Events------------------------
+
+An important feature of threat assessment is a timeline of events. Threat assessment includes investigative findings over a period of time. The assessment takes the findings and plots the points on a timeline. Plotting key points and events on the timeline allows readers to easily see and digest a compromise or attack. 
+
+
+---------------------------Mapping Detailed Threat Assessment Report Information to Mitre ATT&CK Framework-----------------------------
+
+MITRE ATT&CK is a curated knowledge base and model for cyber adversary behavior, reflecting the various phases of an adversary’s attack lifecycle and the platforms they are known to target. ATT&CK originated out of a project to enumerate and categorize post-compromise adversary TTPs against Windows Operating Systems (OS) to improve detection of malicious activity. It now includes Linux and MacOS and covers pre-compromise tactics and techniques, and technology-focused domains like mobile devices. 
+
+At a high level, ATT&CK is a behavioral model that consists of the following core components:
+  Tactics: Denoting short-term, tactical adversary goals during an attack (the columns)
+  Techniques: Describing the means by which adversaries achieve tactical goals (the individual cells)
+  Documented adversary usage of techniques and other metadata (linked to techniques)
+
+NOTE: ATT&CK is not an exhaustive enumeration of attack vectors against software.
+###################### end ofDetailed Threat Assessment Report ###############################
+
+#################### start of Mind Maps ############################
 
 
 
+
+
+
+
+                                                                                                                                                                                                                                                                                     
 
 #######################lesson quiz question #############################
 
