@@ -1,0 +1,395 @@
+####################### day 4 ###########################
+
+#################### start of Planning Lifecycle #######################
+----------------------Planning Lifecycle Overview---------------------------
+
+The first step of the CPT OP is Objectives, Effects, and Guidance. When conditions or requirements trigger a CPT mission, the operational planning section determines the appropriate CPT functions and capabilities before developing preliminary objectives, 
+
+
+Three possible triggers initiate the CPT operations process:
+
+Threat Intelligence: Threat intelligence reporting or warning intelligence may trigger hunt, clear, enable hardening, and assessment functions by the CPT.
+
+Campaign Plan: CPT employment in support of Combatant Command (CCMD) campaign plans is intended to increase critical asset protection prior to operational need.
+  
+Malicious Cyberspace Activity (MCA) Detection: Whether discovered by local network protection assets, network owners, or indicated by threat intelligence reporting, CPT hunting and clearing entails conducting reconnaissance and counter-reconnaissance on supported commanders’ networks or systems to gain and maintain contact with an adversary or further develop a situation.
+
+Once a trigger has been identified a determination for mission need is required. If a mission is required, a PLANORD and TASKORD is developed. 
+
+-------------------------------TASKORD Overview (1)--------------------------------------------
+
+Planning for a CPT operation begins with the issuance of a PLANORD or TASKORD. The PLANORD and TASKORDs 
+
+  --------------------TASKORD Overview (2)------------------------
+Section 2A of the TASKORD defines the intent, purpose, method, and end accomplishment(s) of the task. The Commander’s Intent is the overview of the mission and the applicable actions the CPT takes in the task. The Purpose defines the goals and objectives of the task. The Method defines how the task is executed. The End State defines what constitutes completion of the task.
+
+  images saved commander intent etc
+
+---------------------------TASKORD Overview (3)-----------------------------
+quiz in lesson
+  
+What information is covered in the TASKORD Header?
+  name and goals of taskord and mission
+  subject field
+  name of mission
+
+What information is covered in the TASKORD Section 1?
+  what and why task is being issued
+
+What information is covered in the TASKORD Section 2?
+  intent, purpose, and method of the task
+  list of subtask
+  
+What information is covered in the TASKORD Section 3?
+  administrative and logistical information
+  
+What information is covered in the TASKORD Section 4?
+  command and control information
+
+What information is covered in the TASKORD Section 5?
+  rules of engagement 
+
+
+
+  
+----------------------Terrain Information-------------------------------
+
+Terrain, which covers all of cyberspace, includes the logical and physical components. When defining terrain, Defensive Cyberspace Operations (DCO) team members should use Key Terrain in Cyberspace (KT-C), MRT-C, Task Critical Asset (TCA), and Defense Critical Asset (DCA) as outlined in United States Cyber Command (USCC) Operational Guidance on Identification of Mission Relevant Terrain in Cyberspace. 
+
+errain analysis is the collection, analysis, evaluation, and interpretation of geographic (physical) and digital (virtual) information on the natural and man-made features of the terrain — combined with other relevant factors — to predict the effect of the terrain on military
+
+-------------------Configuration Information----------------------------
+
+Configuration information refers to the details and settings of the machines and devices used on the network. Configuration information can refer to both physical and logical details and settings. Physical configuration information can include data points such as the location of servers, machines, or network devices and the type of hardware making the connection between machines. Logical configuration information can include data points such as Operating Systems (OS), firmware and firewall versions, and Active Directory (AD) users and groups. Configuration information can also include data points containing the Points of Contact (POC) that are responsible for the configurations. 
+
+  quiz
+Which artifacts are part of the data collected during the Planning phase?
+  network diagrams
+  configuration information 
+  terrain information
+
+-----------------------RFI--------------------------
+
+quiz
+An RFI is required for each CPT mission.
+  false  
+
+----------------------------- TASKORD document ----------------------------
+
+The following TASKORD was issued for the operation:
+
+
+SUBJ/ CPT OPERATION TASKORD 001 IN SUPPORT OF OPERATION 33//
+
+
+OPER/CYBER OPERATION 33//
+
+
+MSGID/ORDER/TASKORD/001//
+
+
+REF/A/OPORD/OPERATIONS ORDER 21-001//
+
+
+ORDTYPE/TASKORD/HUNT//
+
+
+TIMEZONE/Z//
+
+
+NARR/This TASKORD directs the CPT to provide support to SCA through the use of DCO capabilities to hunt and clear the identified terrain from MCA.//
+
+
+GENTEXT/SITUATION/1.
+
+
+1.A OPERATION 33 TASKORD 21-001 conducts intelligence-driven hunt operations, counter and clear adversary activity from specified terrain with the supported entity, enable hardening of specified terrain from threat-specific unauthorized activities by reducing the attack surface, and assess the effectiveness of response actions and the risk to current and future mission. Supported entity is provided with an overall risk to mission based on threat, vulnerabilities, and implemented cybersecurity programs in order to provide their commanders/directors with improved Situational Awareness (SA) of their organization’s cybersecurity defensive posture.
+
+
+1.B. AREA OF CONCERN.
+
+
+1.B.1. AREA OF OPERATIONS (AO). The AO is bounded by SCA’s mission, network architecture, Cybersecurity Service Provider (CSSP), program management, and mission supporting services. SCA continuing operations is top priority. 
+
+
+GENTEXT/EXECUTION/2.
+
+
+2.A. CONCEPT OF OPERATIONS.
+
+
+COMMANDER'S INTENT. CPT conducts hunt operations to illuminate the adversary and, when directed, clear the adversary with the support of SCA. In order to identify and characterize the assign terrain, the team assesses the security posture and effectiveness of the security system deployed to increase understanding of defensive postures, validate network assets, and correct local defender's network map, if applicable. Share and assist in synthesizing intelligence on threats, force dispositions and vulnerabilities to secure and defend regional and functional critical information, critical assets, and critical infrastructure/key resources. If an adversary is identified on the network, attempt to identify adversary intentions, collect intelligence, and monitor adversary activity.
+
+
+2.A.1.A PURPOSE. Identify an adversary presence, if it exists, identify the extent of adversary actions, and create a suggested IR plan. Assess SCA’s DCO posture to identify vulnerability mitigation opportunities and reduce the risk of vulnerabilities. 
+
+
+2.A.1.B METHOD. The hunt operations include identification and characterization of MRT-C and KT-C, identification of threats to the assigned terrain, and provide mitigation options to enable hardening based on the identified threat. The operation leverages the Intelligence Community (IC), MITRE ATT&CK tactics and techniques, assessments of cyber threats, and potential adversaries — friendly forces — to evaluate the readiness and effectiveness of SCA’s boundary.
+
+
+2.A.1.C END STATE. Identification of adversary presence and, when directed, clear from the terrain. SCA is provided with a Risk Mitigation Plan (RMP) to improve defenses to degrade adversary ability to maneuver or conduct actions against SCA.
+
+
+2.B. TASKS.
+
+
+2.B.1 SOUTHERN COASTAL AGENCY.
+
+
+2.B.1.A Provide primary site POC for mission coordination of all efforts. Submit POC information (name, title, phone, and email) to POC identified within 48 hours from release of this TASKORD.
+
+
+2.B.1.B Ensure AO and/or Chief Information Officer (CIO) approve friendly forces to operate on SCA cyber terrain. Approval for CPT’s execution of IR No Later Than (NLT) 01 SEP 21.
+
+
+2.B.1.C Provide friendly forces with operational support, physical access, network/system access to include any required network/host credentials; network configuration data; and current network topology diagram to include, but not limited to, the Critical and Defended Asset Lists (CAL/DAL), and Critical Infrastructure and Key Resources (CIKR) to SCA's location, as required.
+
+
+2.B.1.D Coordinate with and provide support to CPT POCs identified through end of mission in order to synchronize DCO execution efforts and ensure mission success.
+
+
+2.B.2 CPT.
+
+
+2.B.2.A. Identify and characterize the terrain to understand the cybersecurity posture of SCA.
+
+
+2.B.2.B. Conduct a hunt mission to detect any adversary presence traversing on network.
+
+
+2.B.2.C Security stack/countermeasures capabilities to provide White cell an understanding of what countermeasures are feasible to direct.
+
+
+2.B.2.D Traffic flow including email, web, and Domain Name System (DNS) traffic to provide insight into how traffic is routed through security stack and enterprise protections.
+
+
+2.B.2.E Logging and analytics to provide insight into information capture and environments into which analysts can query data.
+
+
+2.B.2.F Indicators of Compromise (IOC) to compare and improve existing signatures.
+
+
+2.B.2.E Submit RMP to customer.
+
+
+GENTEXT/ADMIN AND LOGISTICS/3.
+
+
+3.A. SCA funds site survey and follow on hunt mission. CPT does not provide funding.
+
+
+GENTEXT/COMMAND AND CONTROL (C2)/4.
+
+
+4.A. SCA is the supported command. 
+
+
+GENTEXT/ROE/5.
+
+
+5.A. Monitoring Network
+
+
+5.A.1 The entire 10.1.3.X subnet is off-limits. This network is in production operation including managing and monitoring of SCA assets that are geographically dispersed.
+
+
+5.A.2 Timeframe of data relevant to operation 15 AUG – 24 AUG 21.
+
+
+5.B. KIT
+
+
+5.B.1 All CPT software and tools included in the kit are approved for use on the network.
+
+
+5.C. SYSTEM ADMINISTRATION
+
+
+5.C.1 Remote Desktop Protocol (RDP) and Secure Shell (SSH), remote agents, and all other remote access tools must be approved by the system engineering and network development team prior to implementation.
+
+
+5.C.2 Compact Discs (CD), Universal Serial Bus (USB), hard disks and other removable media are approved for use.
+
+
+5.C.3 OneWORLD is the monitoring and managing platform used by the monitoring team on the monitoring network. OneWORLD is off-limits and operates on the 10.1.3.X network.
+
+--------------------------Preparing an RFI for Operation 33------------------------------
+
+questions are included and sent to SCA in the RFI:
+  Can the CPT develop an Unclassified (UNCLASS) Persistent Cyber Training Environment (PCTE) that mirrors SCA’s network?
+  Who are the users and users' accesses on the network? 
+  How does the CPT communicate end state and findings of the mission?
+  What is the process of getting RDP and SSH approved by system engineers and network developers? 
+
+-------------------Who are the users and users' accesses on the network? ------------------------------
+
+Network diagrams often include the physical network layer but do not include the cyber-persona layer. 
+
+
+The physical network layer consists of the tactile Information Technology (IT) devices and infrastructure in the domains that provide storage, transport, and processing of information within cyberspace. The layer includes data repositories and the connections that transfer data between network components.
+
+
+The cyber-persona layer is a view of cyberspace created by pulling artifacts and data from the logical network layer to describe actors and entities that utilize the network. The cyber-persona layer consists of network or IT user accounts — whether human or automated — and their relationships to one another.
+
+
+To assess if user accounts or credentials were leveraged by adversaries, the CPT needs information pertaining to the list of users and their respective accesses on the network. This helps correlate adversary activity, for instance, if an account accessed a portion of the network or a system that it is not expected to access, this could be a sign of the adversary leveraging the account’s credentials. The CPT needs information about the users so they can flesh out the cyber-persona layer of their mission relevant terrain in cyberspace (MRT-C).
+
+
+----------------------How does the CPT communicate end state and findings of the mission? -------------------------
+
+The TASKORD defines the end state for the operation. Operation 33 ends when there is identification of adversarial presence, clearing the presence from the terrain, and providing SCA with an RMP to improve defenses to degrade adversary ability to maneuver or conduct actions against SCA. The TASKORD and data collection does not answer how end state is communicated and to which SCA personnel. The SCA might expect a certain style of RMP or a presentation/meeting to discuss the findings of the operation. 
+
+#################### end of Planning Lifecycle #######################
+#################### start of Terrain Identification ###########################
+
+KT-C: Any locality or area — physical or logical — where seizure, retention, or other specified degrees of control provide a marked advantage in cyberspace to any combatant.  
+
+MRT-C: Described as — but not limited to — all devices, internal/external links, Operating Systems (OS), services, applications, ports, protocols, hardware, and software on servers required to enable the function of a critical asset.  
+
+TCA: An asset that is of such extraordinary importance that its incapacitation or destruction would have a serious, debilitating effect on the ability of one or more Department of Defense (DoD) or Office of the Secretary of Defense (OSD) components to execute the capability or mission-essential task it supports. TCAs are used to identify DCAs.  
+
+DCA: An asset of such extraordinary importance to operations in peace, crisis, and war that its incapacitation or destruction would have a very serious, debilitating effect on the ability of the DoD to fulfill its missions.  
+
+-----------------------Terrain Analysis and Identification----------------------------
+
+Terrain analysis is the collection, analysis, evaluation, and interpretation of geographic (physical) and digital (virtual) information on the natural and man-made features of the terrain
+
+---------------------Terrain Analysis and Site Survey ------------------------------
+
+ Information that can be collected during a site survey includes access to the site and necessary equipment, network topology, OSs, and critical on-site personnel to assist with the operation
+
+
+--------------------Terrain-based Cyberspace Threat Hunting Methodologies----------------------------
+
+Analytics — Driven
+  Analytics — Driven methodology leverages data and analytics. This methodology utilizes complex queries and algorithms to apply to data sets. Often the queries are applied utilizing automation in software.
+
+Situational Awareness — Driven 
+  Situational Awareness — Driven methodology leverages an advanced understanding of a particular cyberspace terrain in order to detect anomalous activity. Much like Analytics, Situational Awareness does not require physical access to local     
+  systems.
+
+Intelligence — Driven
+  Intelligence — Driven methodology leverages timely, accurate, mature Cyberspace Threat Intelligence (CTI) to detect advanced cyberspace threats. Intelligence — Driven methodology requires physical access to local systems. 
+
+
+--------------------Defining an Operational Environment---------------------------
+
+ployment of capabilities and bear on the decisions of the commander. Components including the type of equipment, the size of the network, OSs, key personnel, and schedule of the location all play critical roles in decision making. These components help to define the OE.
+
+Defining the OE results in the identification of: 
+  Significant characteristics that can affect friendly and threat operations
+  Gaps in current intelligence
+
+--------------------Layers of Cyberspace----------------------------
+
+When defining the OE, start with the three layers of cyberspace:
+  Physical network 
+            The physical network layer consists of the tactile Information Technology (IT) devices and infrastructure in the domains that provide storage, transport, and processing of information within cyberspace. The layer includes data                  repositories and the connections that transfer data between network components.
+  Logical network
+            The logical network layer consists of all the data — whether resting, moving, or being used in the physical network layer. The logical network layer is based on the programming or software that drives network communications,                    interactions, and connectivity            
+  Cyber-Persona
+          The cyber-persona layer is a view of cyberspace created by pulling artifacts and data from the logical network layer to describe actors and entities that utilize the network. The cyber-persona layer consists of network or IT user               accounts, whether human or automated, and their relationships to one another.
+
+
+
+
+#######################lesson quiz question #############################
+
+What is best described as any locality or area — physical or logical — where seizure, retention, or other specified degree of control provides a marked advantage in cyberspace to any combatant?
+    KT-c
+
+The site survey provides time that is used to gain the agreement with the network owner and OPCON chain in regards to tactical plan execution.
+    ture
+
+Which best describes a Situational Awareness — Driven CTH methodology?
+  this methodology leverages an advance understaanding of a particular cyberspace terrain in order to detect anomalous activity, which could implicate advanced cyberspace threats
+
+An OE is a composite of what?
+  conditions, circumstances, influences
+
+Which OE layer is best described as based on logic programming (code) that drives network components?
+  logical network
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
